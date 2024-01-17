@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  // min-height: 100vh;
+  position: relative;
+  min-width: 375px;
+  color: $color-primary;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+
+  main {
+    flex: 1;
+    width: 100%;
+    margin: 0 auto;
+    max-width: $desktop-max-width;
+    padding: 0 20px 50px;
+  }
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+}
+a {
+  text-decoration: none;
+  color: $color-primary;
+  &:hover {
+    cursor: pointer;
+  }
+}
+ul {
+  list-style-type: none;
+}
