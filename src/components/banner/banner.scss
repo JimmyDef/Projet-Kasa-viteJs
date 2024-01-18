@@ -23,18 +23,35 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("./../../assets/background_mountain-min.png");
   }
+  &--height {
+    height: 210px;
+  }
+  &--no-txt {
+    display: none;
+  }
 }
-.banner--height {
-  height: 210px;
+
+@media screen and (min-width: 600px) {
+  .banner {
+    margin: 60px auto 40px;
+    height: 210px;
+    .mobile-break {
+      display: none;
+    }
+
+    h1 {
+      width: 100%;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
 }
 @media screen and (min-width: $desktop-min-width) {
   .banner {
     margin: 60px auto 40px;
     height: 210px;
     h1 {
-      width: 100%;
       font-size: 44px;
-      text-align: center;
     }
   }
 }
