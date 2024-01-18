@@ -11,7 +11,7 @@ import useFetch from "./../../utils/useFetch";
 
 function Accomodation() {
   const { id } = useParams();
-  const tast = "tast";
+
   const accomodations = useFetch(window.location.origin + "/data.json");
   //
   //Si Fetch OK : recherche de l'objet method .find()
@@ -112,14 +112,12 @@ function Accomodation() {
           <Collapse
             title="Description"
             text={accomodation.description}
-            collapseState={false}
-            extraClass={"accomodation-collapse"}
+            collapseState={true}
           />
           <Collapse
             title="Equipements"
             text={accomodation.equipments}
-            collapseState={false}
-            extraClass="accomodation-collapse"
+            collapseState={true}
           />
         </section>
       </>

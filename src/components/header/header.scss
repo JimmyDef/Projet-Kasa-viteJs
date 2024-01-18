@@ -7,7 +7,6 @@ header {
   justify-content: space-between;
   align-items: center;
   max-width: $desktop-max-width;
-  // flex-grow: 1;
   width: 100%;
 
   img {
@@ -15,10 +14,11 @@ header {
   }
   nav {
     ul {
-      display: flex;
+      // display: flex;
       font-size: 13px;
       li {
-        margin-left: 15px;
+        margin: 5px 0 0 15px;
+
         a {
           &.active {
             text-decoration: underline;
@@ -26,6 +26,17 @@ header {
         }
       }
     }
+  }
+}
+@media screen and (min-width: 370px) {
+  header nav ul {
+    display: flex;
+    li {
+      margin: 0 0 0 15px;
+    }
+  }
+  .uppercase {
+    text-transform: uppercase;
   }
 }
 @media screen and (max-width: 600px) {

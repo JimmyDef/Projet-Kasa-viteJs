@@ -3,7 +3,7 @@ import chevron from "./../../assets/chevron_down_svg.svg";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function Collapse({ title, text, collapseState, extraClass }) {
+function Collapse({ title, text, collapseState }) {
   const [isOpen, setIsOpen] = useState(collapseState);
 
   //--------------------------
@@ -17,7 +17,7 @@ function Collapse({ title, text, collapseState, extraClass }) {
 
       return <ul> {equipments} </ul>;
     }
-    return <>{text}</>;
+    return <p>{text}</p>;
   };
   //--------------------------
   // Fonction pour inverser le déploiement des collapses (true/false)
@@ -27,20 +27,22 @@ function Collapse({ title, text, collapseState, extraClass }) {
   };
 
   return (
-    <div className={`collapse  ${extraClass}`}>
+    <div className="collapse">
       <div className="collapse__title-box" onClick={handleToggle}>
         <h2>{title}</h2>
 
         <img
           src={chevron}
           alt="chevron up down"
-          className={isOpen ? "rotate-chevron" : ""}
+          className={isOpen ? "" : "rotate-chevron"}
         />
       </div>
 
       <div
         className={
-          isOpen ? "collapse__description" : "collapse__description--hidden"
+          isOpen
+            ? "collapse__description"
+            : "collapse__description collapse__description--visible"
         }>
         {description()}
       </div>
@@ -52,10 +54,6 @@ Collapse.propTypes = {
   title: PropTypes.string,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   collapseState: PropTypes.bool,
-  extraClass: PropTypes.string,
-};
-Collapse.defaultProps = {
-  extraClass: "",
 };
 
 export default Collapse;

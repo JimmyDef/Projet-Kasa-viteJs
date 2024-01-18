@@ -1,19 +1,18 @@
 @import "./../../sass/utils/variables-mixin.scss";
 
 .collapse {
-  margin: 0 auto 16px;
+  margin: 0 auto 20px;
   width: 100%;
   max-width: 1000px;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 5px;
   font-weight: 400;
 
   &__title-box {
     height: 30px;
-    padding: 8px 12px;
+    padding: 8px 15px;
     display: flex;
     background-color: $color-primary;
-    border-radius: 10px;
+    border-radius: 5px;
     justify-content: space-between;
     color: white;
     cursor: pointer;
@@ -33,37 +32,31 @@
   }
 
   &__description {
-    max-height: 200px;
+    max-height: 0;
     position: relative;
-    // padding: 30px 12px 10px;
     z-index: -1;
     border-radius: 5px;
     background-color: $color-bg;
-    transition: all 600ms ease-in-out;
-
+    transition: max-height 500ms;
     overflow: hidden;
     transform: translateY(-15px);
-    &--hidden {
-      overflow: hidden;
-      max-height: 0px;
-      z-index: -1;
-      position: relative;
-      // height: 0px;
-      transition: all 600ms ease-in-out;
+    font-size: 12px;
+    &--visible {
+      max-height: 300px;
     }
-    p {
-      font-size: 12px;
+    p,
+    ul {
+      margin: 28px 20px 20px;
     }
     ul {
-      li {
-        font-size: 12px;
-        // margin-bottom: 4px;
-      }
+      line-height: 1.5;
     }
   }
 }
 @media screen and (min-width: $tablet-min-width) {
   .collapse {
+    margin-bottom: 30px;
+
     &__title-box {
       height: 40px;
       padding: 10px 12px;
@@ -78,26 +71,10 @@
 
     &__description {
       min-height: 0;
-      padding: 45px 12px 10px;
-      p {
-        font-size: 16px;
-      }
+      font-size: 16px;
+      p,
       ul {
-        li {
-          font-size: 12px;
-        }
-      }
-    }
-    &.accomodation-collapse {
-      .collapse__description {
-        p {
-          font-size: 16px;
-        }
-        ul {
-          li {
-            font-size: 16px;
-          }
-        }
+        margin-top: 35px;
       }
     }
   }
@@ -114,28 +91,10 @@
       }
     }
     &__description {
-      p {
-        font-size: 20px;
-      }
-    }
-    &.accomodation-collapse {
-      .collapse__title-box {
-        height: 52px;
-        padding: 5px 12px;
-        h2 {
-          font-size: 18px;
-        }
-      }
-
-      .collapse__description {
-        p {
-          font-size: 18px;
-        }
-        ul {
-          li {
-            font-size: 18px;
-          }
-        }
+      font-size: 20px;
+      p,
+      ul {
+        margin-top: 40px;
       }
     }
   }

@@ -5,7 +5,7 @@
   overflow: hidden;
   height: 255px;
   width: 100%;
-  max-width: 500px;
+  // max-width: 500px;
   border-radius: 10px;
   transition: all 250ms;
   cursor: pointer;
@@ -46,6 +46,5 @@
 @media screen and (min-width: 900px) {
   .card {
     height: 340px;
-    max-width: 350px;
   }
 }

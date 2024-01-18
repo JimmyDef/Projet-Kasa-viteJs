@@ -12,7 +12,7 @@ function About() {
           <Collapse
             title={data.title}
             text={data.text}
-            collapseState={false}
+            collapseState={true}
             key={`${data.title}-${idx}`}
           />
         ))}

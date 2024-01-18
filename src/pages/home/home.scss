@@ -3,16 +3,23 @@
 .rentals {
   display: grid;
   gap: 20px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  // grid-template-columns: 1fr ;
   border-radius: 20px;
   margin-bottom: 60px;
 }
 
-@media screen and (min-width: 645px) {
+@media screen and (min-width: 640px) {
   .rentals {
+    grid-template-columns: 1fr 1fr;
     background-color: $color-bg;
   }
 }
+@media screen and (min-width: 1200px) {
+  .rentals {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 @media screen and (min-width: 740px) {
   .rentals {
     padding: 30px;
