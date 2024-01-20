@@ -9,7 +9,21 @@ function Home() {
   //utilisation du Hook personnalisé pour récupérer les "state" associés ( Fetch, loading)
   //--------------------------
 
-  const accomodations = useFetch(window.location.origin + "/data.json");
+  const { fetchedData, isLoading, errorData } = useFetch(
+    window.location.origin + "/data.json"
+  );
+
+  //
+  //Si error du fetch : message d'erreur.
+  //
+
+  if (errorData) {
+    return (
+      <div className="error-txt">
+        Erreur de chargement, veuillez réessayer ultérieurement.
+      </div>
+    );
+  }
 
   return (
     <>
@@ -18,11 +32,11 @@ function Home() {
 // Loading (5sec max) ou display des cards avec leurs propriétés
 // */}
 
-      {accomodations.isLoading || accomodations.fetchedData.length === 0 ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <section className="rentals">
-          {accomodations.fetchedData.map((rental, idx) => (
+          {fetchedData.map((rental, idx) => (
             <Card
               cover={rental.cover}
               title={rental.title}

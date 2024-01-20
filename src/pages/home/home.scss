@@ -7,16 +7,26 @@
   border-radius: 20px;
   margin-bottom: 60px;
 }
-
+.error-txt {
+  font-size: 20px;
+  margin-top: 100px;
+  text-align: center;
+}
 @media screen and (min-width: 640px) {
   .rentals {
     grid-template-columns: 1fr 1fr;
     background-color: $color-bg;
   }
+  .error-txt {
+    font-size: 28px;
+  }
 }
 @media screen and (min-width: 1200px) {
   .rentals {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .error-txt {
+    font-size: 32px;
   }
 }
 

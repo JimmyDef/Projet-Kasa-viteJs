@@ -10,6 +10,9 @@ function useFetch(url) {
   // State pour la gestion du loader :
   const [isLoading, setLoading] = useState(true);
 
+  // State pour la gestion de l'erreur :
+  const [errorData, setError] = useState(false);
+
   useEffect(() => {
     if (!url) return;
     setLoading(true);
@@ -20,14 +23,15 @@ function useFetch(url) {
         setFetchedData(data);
       } catch (error) {
         console.log("~ getData ~ error:", error);
+        setError(true);
       } finally {
         setLoading(false);
       }
     }
     getData();
   }, [url]);
-  console.log("🚀 ~ fetchedData:", fetchedData);
-  return { fetchedData, isLoading };
+
+  return { fetchedData, isLoading, errorData };
 }
 
 export default useFetch;

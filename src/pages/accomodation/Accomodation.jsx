@@ -12,20 +12,21 @@ import useFetch from "./../../utils/useFetch";
 function Accomodation() {
   const { id } = useParams();
 
-  const accomodations = useFetch(window.location.origin + "/data.json");
+  const { fetchedData, isLoading } = useFetch(
+    window.location.origin + "/data.json"
+  );
   //
   //Si Fetch OK : recherche de l'objet method .find()
   //
   let accomodation;
-  if (accomodations.fetchedData) {
-    accomodation = accomodations.fetchedData.find((elt) => elt.id === id);
+  if (fetchedData && fetchedData.length > 0) {
+    accomodation = fetchedData.find((elt) => elt.id === id);
   }
   //
   //Si isLoading à TRUE : Affichage du composant loader (et de son Timer)
   //
 
-  if (accomodations.isLoading) {
-    console.log(accomodations.fetchedData);
+  if (isLoading) {
     return <Loader />;
   }
 
@@ -46,10 +47,11 @@ function Accomodation() {
 
     return (
       <>
-        <Carrousel
-          pictures={accomodation.pictures}
-          title={accomodation.title}
-        />
+        <Carrousel {...accomodation} />
+
+        {/* // 
+           spread attributes / proprs spreadin
+           // */}
 
         {/* // 
            //Création titres + tag
@@ -74,7 +76,7 @@ function Accomodation() {
 
           <div className="accomodation-profil">
             <div className="accomodation-profil__stars">
-              {[...Array(5)].map((elt, idx) => {
+              {[...Array(5)].map((_, idx) => {
                 const ratingArrayValue = idx + 1;
 
                 return ratingArrayValue <= rating ? (
