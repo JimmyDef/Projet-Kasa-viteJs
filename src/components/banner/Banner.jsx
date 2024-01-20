@@ -1,12 +1,12 @@
 import "./banner.scss";
 import PropTypes from "prop-types";
-function Banner({ img, noTxt, size }) {
+function Banner({ extraClass }) {
   return (
     // --------------------------
     //Récupération des nom de class via les props, pour définir le background-img et la taille
     // --------------------------
-    <div className={`banner ${img} ${size}`}>
-      <h1 className={noTxt}>
+    <div className={`banner ${extraClass} `}>
+      <h1>
         Chez vous,
         <br className="mobile-break" /> partout et ailleurs
       </h1>
@@ -15,13 +15,11 @@ function Banner({ img, noTxt, size }) {
 }
 
 Banner.propTypes = {
-  img: PropTypes.string,
-  noTxt: PropTypes.string,
-  size: PropTypes.string,
+  extraClass: PropTypes.string,
 };
 
 Banner.defaultProps = {
-  noTxt: "",
+  extraClass: "",
 };
 
 export default Banner;

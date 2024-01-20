@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <>
-      <Banner img="img-cliff" />
+      <Banner extraClass="home" />
       {/* //
 // Loading (5sec max) ou display des cards avec leurs propriétés
 // */}
@@ -37,12 +37,7 @@ function Home() {
       ) : (
         <section className="rentals">
           {fetchedData.map((rental, idx) => (
-            <Card
-              cover={rental.cover}
-              title={rental.title}
-              key={`${rental.id}-${idx}`}
-              id={rental.id}
-            />
+            <Card {...rental} key={`${rental.id}-${idx}`} />
           ))}
         </section>
       )}

@@ -9,25 +9,21 @@
   background-position: center 30%;
   display: flex;
   align-items: center;
-
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./../../assets/background_cliff-min.png");
   h1 {
     margin-left: 16px;
     font-size: 24px;
     font-weight: 400;
   }
-  &.img-cliff {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("./../../assets/background_cliff-min.png");
-  }
-  &.img-mountain {
+
+  &.about-us {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("./../../assets/background_mountain-min.png");
-  }
-  &--height {
     height: 210px;
-  }
-  &--no-txt {
-    display: none;
+    h1 {
+      display: none;
+    }
   }
 }
 
