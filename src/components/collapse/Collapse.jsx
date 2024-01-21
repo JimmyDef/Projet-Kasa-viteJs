@@ -9,7 +9,7 @@ function Collapse({ title, text, collapseState }) {
   //--------------------------
   // Fonction en cas de tableau récupéré dans le state "text" (et non une string)
   //--------------------------
-  const description = () => {
+  const renderTextContent = () => {
     if (Array.isArray(text)) {
       const equipments = text.map((elt, idx) => (
         <li key={`${elt}-${idx}`}>{elt}</li>
@@ -38,13 +38,8 @@ function Collapse({ title, text, collapseState }) {
         />
       </div>
 
-      <div
-        className={
-          isOpen
-            ? "collapse__description"
-            : "collapse__description collapse__description--visible"
-        }>
-        {description()}
+      <div className={`collapse__description ${isOpen ? "" : "visible"}`}>
+        {renderTextContent()}
       </div>
     </div>
   );

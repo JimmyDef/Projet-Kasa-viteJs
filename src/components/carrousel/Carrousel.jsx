@@ -9,35 +9,38 @@ function Carrousel({ pictures, title }) {
   // --------------------------
   // UseState picture[index]
   // --------------------------
-  const [index, SetImgArrayNumber] = useState(0);
+  const [index, SetImgNumber] = useState(0);
 
   // --------------------------
-  // Fonction image précédente
+  // Fonction image précédente/suivante
   // --------------------------
 
-  const HandlePictureLeft = () => {
-    if (index === 0) {
-      return SetImgArrayNumber(pictures.length - 1);
-    } else {
-      return SetImgArrayNumber(index - 1);
+  const HandlePictureSwap = (direction) => {
+    if (direction === "left") {
+      if (index === 0) {
+        return SetImgNumber(pictures.length - 1);
+      } else {
+        return SetImgNumber(index - 1);
+      }
     }
-  };
-
-  // --------------------------
-  // Fonction image suivante
-  // --------------------------
-
-  const HandlePictureRight = () => {
-    if (index + 1 === pictures.length) {
-      return SetImgArrayNumber(0);
-    } else {
-      return SetImgArrayNumber(index + 1);
+    if (direction === "right") {
+      if (index + 1 === pictures.length) {
+        return SetImgNumber(0);
+      } else {
+        return SetImgNumber(index + 1);
+      }
     }
   };
 
   return (
     <section className="carrousel">
-      <img src={pictures[index]} alt={title} className="carrousel__pictures" />
+      {
+        <img
+          src={pictures.length === 0 ? defaultPicture : pictures[index]}
+          alt={title}
+          className="carrousel__pictures"
+        />
+      }
 
       {/* ---- Opérateur ternaire affichage/masquage navigation img ----*/}
 
@@ -47,13 +50,13 @@ function Carrousel({ pictures, title }) {
             src={arrowLeft}
             alt="chevron gauche"
             className="carrousel__arrow carrousel__arrow--left"
-            onClick={HandlePictureLeft}
+            onClick={() => HandlePictureSwap("left")}
           />
           <img
             src={arrowRight}
             alt="chevron droit"
             className="carrousel__arrow carrousel__arrow--right"
-            onClick={HandlePictureRight}
+            onClick={() => HandlePictureSwap("right")}
           />
           <div className="carrousel__counteur-box">
             <p>{`${index + 1} / ${pictures.length} `}</p>

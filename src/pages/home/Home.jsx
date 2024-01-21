@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <>
-      <Banner extraClass="home" />
+      <Banner />
       {/* //
 // Loading (5sec max) ou display des cards avec leurs propriétés
 // */}

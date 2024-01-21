@@ -50,7 +50,7 @@ function Accomodation() {
         <Carrousel {...accomodation} />
 
         {/* // 
-           spread attributes / proprs spreadin
+           spread attributes / props spreadin
            // */}
 
         {/* // 

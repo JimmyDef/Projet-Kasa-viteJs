@@ -3,7 +3,7 @@ import "./card.scss";
 
 import { Link } from "react-router-dom";
 
-function card({ title, cover, id }) {
+function Card({ title, cover, id }) {
   //--------------------------
   // Utilisation des props pour générer les cards depuis: <Home/> => Fetch => Card => link
   //--------------------------
@@ -18,10 +18,10 @@ function card({ title, cover, id }) {
   );
 }
 
-card.propTypes = {
+Card.propTypes = {
   title: PropTypes.string,
   cover: PropTypes.string,
   id: PropTypes.string,
 };
 
-export default card;
+export default Card;
