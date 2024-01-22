@@ -13,7 +13,7 @@ function Accomodation() {
   const { id } = useParams();
 
   const { fetchedData, isLoading } = useFetch(
-    window.location.origin + "/data.json"
+    window.location.origin + "/daata.json"
   );
   //
   //Si Fetch OK : recherche de l'objet method .find()
