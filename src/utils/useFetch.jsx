@@ -15,7 +15,7 @@ function useFetch(url) {
 
   useEffect(() => {
     if (!url) return;
-    setLoading(true);
+
     async function getData() {
       try {
         const res = await fetch(url);

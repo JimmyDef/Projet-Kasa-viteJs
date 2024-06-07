@@ -29,7 +29,7 @@
 
 @media screen and (min-width: 600px) {
   .banner {
-    margin: 60px auto 40px;
+    margin: 40px auto 40px;
     height: 210px;
     .mobile-break {
       display: none;
@@ -44,7 +44,6 @@
 }
 @media screen and (min-width: $desktop-min-width) {
   .banner {
-    margin: 60px auto 40px;
     height: 210px;
     h1 {
       font-size: 44px;

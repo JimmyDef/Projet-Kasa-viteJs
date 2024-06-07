@@ -27,7 +27,11 @@ function Accomodation() {
   //
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="accomodation-loader-wrapper">
+        <Loader />
+      </div>
+    );
   }
 
   //

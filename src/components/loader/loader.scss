@@ -1,20 +1,14 @@
 .loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lds-ripple {
-  margin: 75px auto;
-
-  position: absolute;
-  width: 0;
-  top: 37%;
-  left: 50%;
-  height: 0;
-  transform: translateX(-75px);
+  position: relative;
+  margin-bottom: 50px;
+  z-index: 1000;
+  height: 150px;
+  width: 150px;
 }
 .lds-ripple div {
   position: absolute;
