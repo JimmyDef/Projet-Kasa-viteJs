@@ -1,6 +1,6 @@
 @import "./../../sass/utils/variables-mixin";
 .accomodation-loader-wrapper {
-  margin-top: 50px;
+  margin-top: 131px;
 }
 .accomodation-info {
   h2 {
@@ -76,6 +76,9 @@
 }
 
 @media screen and (min-width: $tablet-min-width) {
+  .accomodation-loader-wrapper {
+    margin-top: 280px;
+  }
   .accomodation-detail-wrapper {
     margin-bottom: 26px;
     display: flex;
