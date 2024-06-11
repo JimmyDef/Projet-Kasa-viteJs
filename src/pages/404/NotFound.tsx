@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./notFound.scss";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <section className="not-found">
       <h1>404</h1>
@@ -9,4 +9,5 @@ export default function NotFound() {
       <Link to="/">Retourner sur la page d’accueil</Link>
     </section>
   );
-}
+};
+export default NotFound;

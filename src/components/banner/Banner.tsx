@@ -1,6 +1,9 @@
 import "./banner.scss";
-import PropTypes from "prop-types";
-function Banner({ extraClass }) {
+type BannerProps = {
+  extraClass?: string;
+};
+
+const Banner = ({ extraClass = "" }: BannerProps) => {
   return (
     // --------------------------
     //Récupération des nom de class via les props, pour définir le background-img et la taille
@@ -12,14 +15,6 @@ function Banner({ extraClass }) {
       </h1>
     </div>
   );
-}
-
-Banner.propTypes = {
-  extraClass: PropTypes.string,
-};
-
-Banner.defaultProps = {
-  extraClass: "",
 };
 
 export default Banner;

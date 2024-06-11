@@ -1,33 +1,45 @@
 import "./carrousel.scss";
-import PropTypes from "prop-types";
 import arrowLeft from "./../../assets/chevron_carousel_left.svg";
 import arrowRight from "./../../assets/chevron_carousel_right.svg";
 import defaultPicture from "./../../assets/default_img_carrousel.png";
-import { useState } from "react";
 
-function Carrousel({ pictures, title }) {
+import { useState, useEffect } from "react";
+
+type CarrouselProps = {
+  pictures: string[];
+  title: string;
+};
+
+const Carrousel = ({
+  pictures = [defaultPicture],
+  title = "Hébergement",
+}: CarrouselProps) => {
   // --------------------------
   // UseState picture[index]
   // --------------------------
-  const [index, SetImgNumber] = useState(0);
+  const [pictureIndex, SetPictureIndex] = useState<number>(0);
+  useEffect(() => {
+    console.log("pictures:", pictures);
+    console.log("🚀 ~ defaultPicture:", defaultPicture);
+  }, []);
 
   // --------------------------
   // Fonction image précédente/suivante
   // --------------------------
 
-  const HandlePictureSwap = (direction) => {
+  const handlePictureSwap = (direction: "left" | "right"): void => {
     if (direction === "left") {
-      if (index === 0) {
-        return SetImgNumber(pictures.length - 1);
+      if (pictureIndex === 0) {
+        return SetPictureIndex(pictures.length - 1);
       } else {
-        return SetImgNumber(index - 1);
+        return SetPictureIndex(pictureIndex - 1);
       }
     }
     if (direction === "right") {
-      if (index + 1 === pictures.length) {
-        return SetImgNumber(0);
+      if (pictureIndex + 1 === pictures.length) {
+        return SetPictureIndex(0);
       } else {
-        return SetImgNumber(index + 1);
+        return SetPictureIndex(pictureIndex + 1);
       }
     }
   };
@@ -36,7 +48,7 @@ function Carrousel({ pictures, title }) {
     <section className="carrousel">
       {
         <img
-          src={pictures.length === 0 ? defaultPicture : pictures[index]}
+          src={pictures.length === 0 ? defaultPicture : pictures[pictureIndex]}
           alt={title}
           className="carrousel__pictures"
         />
@@ -50,34 +62,21 @@ function Carrousel({ pictures, title }) {
             src={arrowLeft}
             alt="chevron gauche"
             className="carrousel__arrow carrousel__arrow--left"
-            onClick={() => HandlePictureSwap("left")}
+            onClick={() => handlePictureSwap("left")}
           />
           <img
             src={arrowRight}
             alt="chevron droit"
             className="carrousel__arrow carrousel__arrow--right"
-            onClick={() => HandlePictureSwap("right")}
+            onClick={() => handlePictureSwap("right")}
           />
           <div className="carrousel__counteur-box">
-            <p>{`${index + 1} / ${pictures.length} `}</p>
+            <p>{`${pictureIndex + 1} / ${pictures.length} `}</p>
           </div>
         </>
       ) : null}
     </section>
   );
-}
-
-// --------------------------
-// Prop-Types
-// --------------------------
-
-Carrousel.propTypes = {
-  pictures: PropTypes.array,
-  title: PropTypes.string,
-};
-Carrousel.defaultProps = {
-  pictures: [defaultPicture],
-  title: "Hébergement",
 };
 
 export default Carrousel;

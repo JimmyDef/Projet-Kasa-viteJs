@@ -5,6 +5,8 @@ import Home from "./pages/home/Home";
 import RootLayout from "./layout/RootLayout";
 import Accomodation from "./pages/accomodation/Accomodation";
 
+// Add the following line to import the declaration file
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,7 +14,7 @@ const router = createBrowserRouter([
 
     children: [
       {
-        index: "/",
+        index: true,
         element: <Home />,
       },
       {
