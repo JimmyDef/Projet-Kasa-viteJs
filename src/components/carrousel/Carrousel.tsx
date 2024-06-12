@@ -18,10 +18,6 @@ const Carrousel = ({
   // UseState picture[index]
   // --------------------------
   const [pictureIndex, SetPictureIndex] = useState<number>(0);
-  useEffect(() => {
-    console.log("pictures:", pictures);
-    console.log("🚀 ~ defaultPicture:", defaultPicture);
-  }, []);
 
   // --------------------------
   // Fonction image précédente/suivante

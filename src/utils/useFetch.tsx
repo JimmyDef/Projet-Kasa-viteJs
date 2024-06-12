@@ -23,13 +23,13 @@ type User = {
 };
 
 type FetchResult = {
-  fetchedData: ReadonlyUser[];
+  fetchedData: ReadonlyUser[] | null;
   isLoading: boolean;
   errorData: boolean;
 };
 type ReadonlyUser = MyReadonly<User>;
 const useFetch = (url: string): FetchResult => {
-  const [fetchedData, setFetchedData] = useState<ReadonlyUser[]>([]);
+  const [fetchedData, setFetchedData] = useState<ReadonlyUser[] | null>(null);
   const [isLoading, setLoading] = useState(true);
   const [errorData, setError] = useState(false);
 
@@ -39,7 +39,7 @@ const useFetch = (url: string): FetchResult => {
     async function getData() {
       try {
         const res = await fetch(url);
-        const data = await res.json();
+        const data: ReadonlyUser[] = await res.json();
         setFetchedData(data);
       } catch (error) {
         console.log("~ getData ~ error:", error);
@@ -48,6 +48,7 @@ const useFetch = (url: string): FetchResult => {
         setLoading(false);
       }
     }
+    console.log("🚀 ~ fetchedData:", fetchedData);
     getData();
   }, [url]);
 
@@ -55,3 +56,23 @@ const useFetch = (url: string): FetchResult => {
 };
 
 export default useFetch;
+
+// const isReadonlyUser = (data: any): data is ReadonlyUser => {
+//   return (
+//     typeof data.id === "string" &&
+//     typeof data.title === "string" &&
+//     typeof data.cover === "string" &&
+//     Array.isArray(data.pictures) &&
+//     data.pictures.every((pic: any) => typeof pic === "string") &&
+//     typeof data.description === "string" &&
+//     typeof data.host === "object" &&
+//     typeof data.host.picture === "string" &&
+//     typeof data.host.name === "string" &&
+//     typeof data.rating === "string" &&
+//     typeof data.location === "string" &&
+//     Array.isArray(data.equipments) &&
+//     data.equipments.every((eq: any) => typeof eq === "string") &&
+//     Array.isArray(data.tags) &&
+//     data.tags.every((tag: any) => typeof tag === "string")
+//   );
+// };

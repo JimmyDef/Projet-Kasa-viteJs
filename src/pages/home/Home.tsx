@@ -25,7 +25,7 @@ function Home() {
         <Loader />
       ) : (
         <section className="rentals">
-          {fetchedData.map((rental, idx) => (
+          {fetchedData?.map((rental, idx) => (
             <Card {...rental} key={`${rental.id}-${idx}`} />
           ))}
         </section>

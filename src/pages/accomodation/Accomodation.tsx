@@ -6,6 +6,7 @@ import redStar from "./../../assets/start-red.png";
 import greyStar from "./../../assets/star_grey.png";
 import Loader from "../../components/loader/Loader";
 import useFetch from "../../utils/useFetch";
+// import { useState } from "react";
 
 type Host = {
   name: string;
@@ -34,8 +35,6 @@ const Accomodation = () => {
   let accomodation: Accomodation | undefined;
   if (fetchedData && fetchedData.length > 0) {
     accomodation = fetchedData.find((elt) => elt.id === id);
-
-    console.log("🚀 ~ accomodation:", accomodation);
   }
 
   if (isLoading) {
@@ -51,7 +50,7 @@ const Accomodation = () => {
   }
 
   const rating = parseInt(accomodation.rating);
-  const [forename, name] = accomodation.host.name.split(" ");
+  const [forename, name] = accomodation.host.name.split(" ") || [];
 
   return (
     <>
