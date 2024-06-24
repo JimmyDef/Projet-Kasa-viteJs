@@ -4,7 +4,8 @@ import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 import RootLayout from "./layout/RootLayout";
 import Accomodation from "./pages/accomodation/Accomodation";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // Add the following line to import the declaration file
 
 const router = createBrowserRouter([
@@ -33,9 +34,14 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
+const queryClient = new QueryClient();
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

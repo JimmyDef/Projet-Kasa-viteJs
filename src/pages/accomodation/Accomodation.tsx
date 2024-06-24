@@ -5,8 +5,8 @@ import "./accomodation.scss";
 import redStar from "./../../assets/start-red.png";
 import greyStar from "./../../assets/star_grey.png";
 import Loader from "../../components/loader/Loader";
-import useFetch from "../../utils/useFetch";
-// import { useState } from "react";
+import { fetchRentals } from "../../utils/fetcher.modules";
+import { useQuery } from "@tanstack/react-query";
 
 type Host = {
   name: string;
@@ -28,9 +28,15 @@ type Accomodation = {
 
 const Accomodation = () => {
   const { id } = useParams();
-  const { fetchedData, isLoading } = useFetch(
-    window.location.origin + "/data.json"
-  );
+
+  const {
+    data: fetchedData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["rentals"],
+    queryFn: () => fetchRentals(window.location.origin + "/data.json"),
+  });
 
   let accomodation: Accomodation | undefined;
   if (fetchedData && fetchedData.length > 0) {
@@ -45,12 +51,12 @@ const Accomodation = () => {
     );
   }
 
-  if (!accomodation) {
+  if (!accomodation || isError) {
     return <Navigate to="/notFound" replace />;
   }
 
   const rating = parseInt(accomodation.rating);
-  const [forename, name] = accomodation.host.name.split(" ") || [];
+  const [forename, name] = accomodation.host.name.split(" ");
 
   return (
     <>

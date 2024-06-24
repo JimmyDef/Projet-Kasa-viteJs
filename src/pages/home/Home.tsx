@@ -1,15 +1,20 @@
 import "./home.scss";
-import useFetch from "../../utils/useFetch";
+import { fetchRentals } from "../../utils/fetcher.modules";
 import Banner from "../../components/banner/Banner";
 import Loader from "../../components/loader/Loader";
 import Card from "../../components/card/Card";
-
+import { useQuery } from "@tanstack/react-query";
 function Home() {
-  const { fetchedData, isLoading, errorData } = useFetch(
-    window.location.origin + "/data.json"
-  );
+  const {
+    data: fetchedData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["rentals"],
+    queryFn: () => fetchRentals(window.location.origin + "/data.json"),
+  });
 
-  if (errorData) {
+  if (isError) {
     return (
       <div className="error-txt">
         Erreur de chargement, veuillez réessayer ultérieurement.

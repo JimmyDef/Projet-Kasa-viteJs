@@ -3,7 +3,7 @@ import arrowLeft from "./../../assets/chevron_carousel_left.svg";
 import arrowRight from "./../../assets/chevron_carousel_right.svg";
 import defaultPicture from "./../../assets/default_img_carrousel.png";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 type CarrouselProps = {
   pictures: string[];
